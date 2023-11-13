@@ -1,0 +1,35 @@
+{% load static %} 
+<html> 
+    <head> 
+        <title>{% block title %}Главная страница{% endblock %}</title> 
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+        <script src="{% static 'js/jquery-3.7.1.js' %}"></script>
+        <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+        {% block extra_head %} 
+        {% endblock %} 
+    </head> 
+    <body> 
+        <div class="container">
+            {% block header %}
+            <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <ul class="nav nav-pills">
+                {% block active_menu %}
+                {% endblock %}
+            </ul>
+            </header>
+            {% endblock %}
+        </div>
+
+        <div class="container">
+            {% block main_content %} 
+            {% endblock %} 
+        </div> 
+
+        <div class="container">
+            {% block footer %}
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            </footer>
+            {% endblock %}
+        </div>
+    </body> 
+</html> 

@@ -1,0 +1,12 @@
+{% extends "base.html" %} 
+
+{% load crispy_forms_tags %}
+
+{% block main_content %}
+    <h1>Вход</h1>
+    <form action="." method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="row"><div class="col"><input type="submit" class="btn btn-primary" value="Войти"></div><div class="col"><a href="{% url 'account:register' %}" class="btn btn-light stretched-link">Зарегистрироваться</a></div></div>
+    </form>
+{% endblock %}

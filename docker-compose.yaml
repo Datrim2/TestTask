@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+
+  db:
+    container_name: db
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: '${DBNAME_PG}'
+      POSTGRES_USER: '${USER_PG}'
+      POSTGRES_PASSWORD: '${PASSWORD_PG}'
+      PGDATA: "/var/lib/postgresql/data/postgres"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data:z
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    container_name: pgadmin
+    image: "dpage/pgadmin4"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: '${USER_PG}@example.com'
+      PGADMIN_DEFAULT_PASSWORD: '${PASSWORD_PG}'
+    volumes:
+       - ./data/pgadmin:/var/lib/pgadmin:z
+    ports:
+      - "8080:80"

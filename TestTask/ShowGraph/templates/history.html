@@ -1,0 +1,27 @@
+{% extends "base.html" %} 
+
+{% block active_menu %}
+    <li class="nav-item"><a href="{% url 'showgraph:history' %}" class="nav-link active" aria-current="page">История</a></li>
+    <li class="nav-item"><a href="{% url 'showgraph:load' %}" class="nav-link">Загрузка файла</a></li>
+{% endblock %}
+
+{% block main_content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">№</th>
+        <th scope="col">Наименование файла</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for file in object_list %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ file.doc_name }}</td>
+            <td><a href="{% url 'showgraph:plot'  files_id=file.id %}" class="nav-link">просмотр</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %} 
+
+{% block active_menu %}
+    <li class="nav-item"><a href="{% url 'showgraph:history' %}" class="nav-link" aria-current="page">История</a></li>
+    <li class="nav-item"><a href="{% url 'showgraph:load' %}" class="nav-link">Загрузка файла</a></li>
+{% endblock %}
+
+{% block main_content %}
+{% autoescape off %}
+{% for plot in plots_div %}
+    {{ plot }}
+{% endfor %}
+{% endautoescape %}
+{% endblock %}
