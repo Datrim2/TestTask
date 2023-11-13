@@ -61,15 +61,15 @@ def index(request,files_id):
         
     plot_div = []
     plot_div.append(plot([Scatter(x=client, y=tps,
-                        mode='lines', name='test',
+                        mode='lines', name='tps',
                         opacity=0.8, marker_color='green')],
             output_type='div'))
     plot_div.append(plot([Scatter(x=client, y=latency,
-                        mode='lines', name='test',
+                        mode='lines', name='latency',
                         opacity=0.8, marker_color='green')],
             output_type='div'))
     plot_div.append(plot([Scatter(x=client, y=stddev,
-                        mode='lines', name='test',
+                        mode='lines', name='stddev',
                         opacity=0.8, marker_color='green')],
             output_type='div'))
     return render(request, "view.html", context={'plots_div': plot_div})
